@@ -1,6 +1,10 @@
 # Exercise Tracker App
 
-An example MERN stack (MongoDB, Express, React, Node) application deployed on Google App Engine standard environment. This repository contains both a frontend service with files within `src` as well as a backend service with files in `backend`. You must run them both simultaneously for things to function correctly.
+An example MERN stack (MongoDB, Express, React, Node) application deployed on Google App Engine standard environment.
+
+This repository contains both a frontend service with files within `src` as well as a backend service with files in `backend`. You must run them both simultaneously for things to function correctly.
+
+The frontend service is also configured for hot reloading.
 
 ## Initial setup
 
