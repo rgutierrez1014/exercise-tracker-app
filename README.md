@@ -1,12 +1,14 @@
 # Exercise Tracker App
 
-An example MERN stack (MongoDB, Express, React, Node) application.
+An example MERN stack (MongoDB, Express, React, Node) application deployed on Google App Engine standard environment. This repository contains both a frontend app with files within `src` as well as a backend app with files in `backend`. You must run them both for things to function correctly.
 
-## Available Scripts
+## Running locally
 
-In the project directory, you can run:
+### Frontend app
 
-### `yarn start`
+For the frontend app, open a Terminal tab or window and navigate to the project directory. Run `yarn` or `yarn install` to install dependencies. Then, you can run:
+
+**`yarn start`**
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,12 +16,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn test`
+**`yarn test`**
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+**`yarn build`**
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,9 +31,9 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+**`yarn eject`**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+*Note: this is a one-way operation. Once you `eject`, you can’t go back!*
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
@@ -39,32 +41,29 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### Backend app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For the backend, open another Terminal tab or window. Navigate to the `backend` folder. Run `yarn` or `yarn install` to install backend dependencies. Then, you can run:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+nodemon server
+```
 
-### Code Splitting
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Frontend app
 
-### Analyzing the Bundle Size
+From the project root directory, build the app and deploy using the Google Cloud SDK `deploy` command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+yarn build
+gcloud app deploy --project=<GCP project name>
+```
 
-### Making a Progressive Web App
+### Backend app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Navigate to the `backend` folder (the backend). You can skip the build stage here since we're not deploying any static files and it's not public-facing. Just deploy using the Google Cloud SDK `deploy` command:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+gcloud app deploy --project=<GCP project name>
+```
