@@ -1,6 +1,32 @@
 # Exercise Tracker App
 
-An example MERN stack (MongoDB, Express, React, Node) application deployed on Google App Engine standard environment. This repository contains both a frontend app with files within `src` as well as a backend app with files in `backend`. You must run them both for things to function correctly.
+An example MERN stack (MongoDB, Express, React, Node) application deployed on Google App Engine standard environment. This repository contains both a frontend service with files within `src` as well as a backend service with files in `backend`. You must run them both simultaneously for things to function correctly.
+
+## Initial setup
+
+You will need a `.env` file and a `env_vars.yaml` file for each service.
+
+For the frontend service, you will need to define the following:
+
+```
+# in PROJECT_ROOT/src/.env file:
+API_BASE_URL=http://localhost:5000
+
+# in PROJECT_ROOT/env_vars.yaml file:
+env_variables:
+    API_BASE_URL: <public backend service url>
+```
+
+For the backend service (place both in `backend`), you will need to define the following:
+
+```
+# in .env file:
+ATLAS_URI=<MongoDB instance url>
+
+# in env_vars.yaml:
+env_variables:
+    ATLAS_URI: <MongoDB instance url>
+```
 
 ## Running locally
 
