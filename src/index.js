@@ -1,3 +1,4 @@
+import { hot } from "react-hot-loader/root";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,12 +10,16 @@ import axios from 'axios';
 // axios settings
 axios.defaults.baseURL = app_config.api_base_url;
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const render = (AppComponent) => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <AppComponent />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
+}
+
+render(hot(App));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
