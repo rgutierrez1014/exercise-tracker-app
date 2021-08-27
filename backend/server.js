@@ -2,7 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-require('dotenv').config();
+const app_config = require('./config');
+
+
+if (app_config.app_env === 'development') require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
