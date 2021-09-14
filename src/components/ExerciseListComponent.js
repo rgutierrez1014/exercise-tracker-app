@@ -23,6 +23,7 @@ export default class ExercisesList extends Component {
         this.state = { exercises: [] };
 
         this.deleteExercise = this.deleteExercise.bind(this);
+        this.exerciseList = this.exerciseList.bind(this);
     }
 
     componentDidMount() {

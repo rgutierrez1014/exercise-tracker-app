@@ -44,6 +44,10 @@ module.exports = merge(common, {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.EnvironmentPlugin({
+            NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+            DEBUG: true,
+        })
     ],
     devServer: {
         host: 'localhost',

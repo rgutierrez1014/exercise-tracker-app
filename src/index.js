@@ -19,7 +19,12 @@ const render = (AppComponent) => {
   );
 }
 
-render(hot(App));
+// hot reload on dev only
+if (app_config.app_env === 'development') {
+  render(hot(App));
+} else {
+  render(App);
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

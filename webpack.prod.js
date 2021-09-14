@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -9,7 +10,7 @@ module.exports = merge(common, {
         app: `${path.resolve(__dirname, 'src')}/index.js`
     },
     output: {
-        filename: 'static/js/[name].[hash].js',
+        filename: 'static/js/[name].[fullhash].js',
     },
     devtool: 'source-map',
     module: {
@@ -19,16 +20,21 @@ module.exports = merge(common, {
                 use: [
                     {            
                         loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true
+                        }
                     },
                     {
                         loader: 'css-loader',
                         options: {
+                            importLoaders: 1,
+                            sourceMap: true,
+                            esModule: true,
                             modules: {
                                 mode: 'local',
-                                auto: true,
-                                exportLocalsConvention: 'camelCase'
+                                exportLocalsConvention: 'camelCaseOnly',
+                                namedExport: true,
                             },
-                            sourceMap: true
                         }
                     },
                     {
@@ -40,7 +46,14 @@ module.exports = merge(common, {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'static/css/styles.[hash].css'
+            filename: 'static/css/styles.[fullhash].css'
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+        }),
+        new webpack.EnvironmentPlugin({
+            NODE_ENV: 'production', // use 'development' unless process.env.NODE_ENV is defined
+            DEBUG: false,
         })
     ]
 });

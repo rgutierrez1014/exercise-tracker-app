@@ -18,7 +18,7 @@ env_variables:
     API_BASE_URL: <public backend service url>
 ```
 
-For the backend service (place both in `backend`), you will need to define the following:
+For the backend service (place both files in `backend`), you will need to define the following:
 
 ```
 # in .env file:
@@ -36,13 +36,17 @@ env_variables:
 
 For the frontend app, open a Terminal tab or window and navigate to the project directory. Run `yarn` or `yarn install` to install dependencies. Then, you can run:
 
-**`yarn start`**
+**`yarn dev`**
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+**`yarn start`**
+
+Runs the app in production mode. This is also the entrypoint for Google App Engine.
 
 **`yarn test`**
 
