@@ -17,6 +17,8 @@ module.exports = merge(common, {
         alias: {
             "react-dom": "@hot-loader/react-dom",
         },
+        modules: ['node_modules'],
+        extensions: ['.css', '.json', '.js',],
     },
     devtool: 'inline-source-map',
     module: {

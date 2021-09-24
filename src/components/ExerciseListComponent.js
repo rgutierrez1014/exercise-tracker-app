@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -24,6 +25,7 @@ export default class ExercisesList extends Component {
 
         this.deleteExercise = this.deleteExercise.bind(this);
         this.exerciseList = this.exerciseList.bind(this);
+        this.renderExercises = this.renderExercises.bind(this);
     }
 
     componentDidMount() {
@@ -49,12 +51,14 @@ export default class ExercisesList extends Component {
             return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id} />;
         })
     }
-    
-    render() {
-        return (
-            <div>
-                <h3>Logged Exercises</h3>
-                <table className="table">
+
+    renderExercises() {
+        if (this.state.exercises.length == 0) {
+            return (<p>No exercises yet.</p>);
+        }
+        else {
+            return (
+                <Table>
                     <thead className="thead-light">
                         <tr>
                             <th>Username</th>
@@ -67,7 +71,16 @@ export default class ExercisesList extends Component {
                     <tbody>
                         {this.exerciseList()}
                     </tbody>
-                </table>
+                </Table>
+            )
+        }
+    }
+    
+    render() {
+        return (
+            <div>
+                <h3>Logged Exercises</h3>
+                {this.renderExercises()}
             </div>
         )
     }

@@ -5,10 +5,25 @@ function get_app_env() {
     return process.env.NODE_ENV;
 }
 
-const app_config = {
+const all_config = {
     // add config vars here
-    app_env: get_app_env(),
-    api_base_url: get_app_env() === 'production' ? process.env.API_BASE_URL : 'http://localhost:5000/'
+    common: {
+        app_env: get_app_env(),
+    },
+    development: {
+        api_base_url: 'http://localhost:5000/'
+    },
+    test: {
+        api_base_url: 'http://localhost:5000/'
+    },
+    production: {
+        api_base_url: 'https://api-dot-rg-exercise-tracker.uc.r.appspot.com/'
+    }
+};
+
+const app_config = {
+    ...all_config.common,
+    ...all_config[get_app_env()]
 };
 
 export default app_config;

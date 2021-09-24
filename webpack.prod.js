@@ -11,6 +11,7 @@ module.exports = merge(common, {
     },
     output: {
         filename: 'static/js/[name].[fullhash].js',
+        chunkFilename: 'static/js/[id].[name].[fullhash].js',
     },
     devtool: 'source-map',
     module: {
@@ -30,11 +31,7 @@ module.exports = merge(common, {
                             importLoaders: 1,
                             sourceMap: true,
                             esModule: true,
-                            modules: {
-                                mode: 'local',
-                                exportLocalsConvention: 'camelCaseOnly',
-                                namedExport: true,
-                            },
+                            modules: false
                         }
                     },
                     {
@@ -46,7 +43,8 @@ module.exports = merge(common, {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'static/css/styles.[fullhash].css'
+            filename: 'static/css/[id].styles.[fullhash].css',
+            chunkFilename: 'static/css/[id].styles.[fullhash].css'
         }),
         new webpack.ProvidePlugin({
             process: 'process/browser',

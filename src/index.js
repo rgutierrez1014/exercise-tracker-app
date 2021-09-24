@@ -1,4 +1,5 @@
 import { hot } from "react-hot-loader/root";
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,6 +10,7 @@ import axios from 'axios';
 
 // axios settings
 axios.defaults.baseURL = app_config.api_base_url;
+console.log('axios: API connected at ' + app_config.api_base_url)
 
 const render = (AppComponent) => {
   ReactDOM.render(
