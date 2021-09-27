@@ -33,6 +33,9 @@ const Navigation = (props) => {
                         <NavItem>
                             <NavLink tag={RRNavLink} to="/user">Create User</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink tag={RRNavLink} to="/report">Report</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </div>
