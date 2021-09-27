@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import {
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Button
+} from 'reactstrap';
 import axios from 'axios';
 
 
@@ -79,12 +86,10 @@ export default class CreateExercise extends Component {
         return (
             <div>
                 <h3>Create New Exercise Log</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username: </label>
-                        <select 
-                            required
-                            className="form-control"
+                <Form onSubmit={this.onSubmit}>
+                    <FormGroup>
+                        <Label>Username: </Label>
+                        <Input type="select"
                             value={this.state.username}
                             onChange={this.onChangeUsername}>
                             {
@@ -95,40 +100,38 @@ export default class CreateExercise extends Component {
                                     </option>;
                                 })
                             }
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Description: </label>
-                        <input type="text"
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Description: </Label>
+                        <Input type="text"
                             required
                             className="form-control"
                             value={this.state.description}
                             onChange={this.onChangeDescription}
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Duration (in minutes): </label>
-                        <input
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Duration (in minutes): </Label>
+                        <Input
                             type="text"
                             className="form-control"
                             value={this.state.duration}
                             onChange={this.onChangeDuration}
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Date: </label>
-                        <div>
-                            <DatePicker
-                                selected={this.state.date}
-                                onChange={this.onChangeDate}
-                            />
-                        </div>
-                    </div>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Date: </Label>
+                        <DatePicker
+                            selected={this.state.date}
+                            onChange={this.onChangeDate}
+                        />
+                    </FormGroup>
 
-                    <div className="form-group">
-                        <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
-                    </div>
-                </form>
+                    <br />
+
+                    <Button type="submit" color="primary">Create Exercise Log</Button>
+                </Form>
             </div>
         )
     }

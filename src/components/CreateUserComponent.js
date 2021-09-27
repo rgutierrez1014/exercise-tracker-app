@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import {
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Button
+} from 'reactstrap';
 import axios from 'axios';
 
 
@@ -38,20 +45,19 @@ export default class CreateUser extends Component {
         return (
             <div>
                 <h3>Create New User</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username: </label>
-                        <input type="text"
+                <Form onSubmit={this.onSubmit}>
+                    <FormGroup>
+                        <Label>Username: </Label>
+                        <Input type="text"
                             required
                             className="form-control"
                             value={this.state.username}
                             onChange={this.onChangeUsername}
                         />
-                    </div>
-                    <div className="form-group">
-                        <input type="submit" value="Create User" className="btn btn-primary" />
-                    </div>
-                </form>
+                    </FormGroup>
+                    <br />
+                    <Button type="submit" color="primary">Create User</Button>
+                </Form>
             </div>
         )
     }

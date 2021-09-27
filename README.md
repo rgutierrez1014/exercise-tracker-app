@@ -8,17 +8,7 @@ The frontend service is also configured for hot reloading.
 
 ## Initial setup
 
-You will need a `env_vars.yaml` file for each service, and additionally a `.env` file for the backend service.
-
-For the frontend service, you will need to define the following:
-
-```
-# in PROJECT_ROOT/env_vars.yaml file:
-env_variables:
-    API_BASE_URL: <public backend service url>
-```
-
-For the backend service (place both files in `backend`), you will need to define the following:
+You will need a `env_vars.yaml` file and a `.env` file for the backend service.
 
 ```
 # in .env file:
@@ -29,6 +19,8 @@ ATLAS_URI=<MongoDB instance url>
 env_variables:
     ATLAS_URI: <MongoDB instance url>
 ```
+
+For the frontend, modify the objects within **config.js** to set up variables for each type of environment.
 
 ## Running locally
 
@@ -50,18 +42,14 @@ Runs the app in production mode. This is also the entrypoint for Google App Engi
 
 **`yarn test`**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 **`yarn build`**
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The build is minified and the filenames include the hashes.
 
 **`yarn eject`**
 
@@ -71,7 +59,7 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn’t customize it when you are ready for it.
 
 ### Backend app
 

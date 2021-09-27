@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import {
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Button
+} from 'reactstrap';
 import axios from 'axios';
 
 
@@ -38,7 +45,7 @@ export default class EditExercise extends Component {
                 console.log(error);
             });
 
-        axios.get(`/users/`)
+        axios.get(`/users`)
             .then(response => {
                 this.setState({ users: response.data.map(user => user.username) });
             })
@@ -81,8 +88,6 @@ export default class EditExercise extends Component {
             date: this.state.date,
         };
 
-        console.log(exercise);
-
         axios.post(`/exercises/update/${this.state.exercise_id}`, exercise)
             .then(res => console.log(res.data));
 
@@ -93,11 +98,10 @@ export default class EditExercise extends Component {
         return (
             <div>
                 <h3>Edit Exercise Log</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username: </label>
-                        <select 
-                            className="form-control"
+                <Form onSubmit={this.onSubmit}>
+                    <FormGroup>
+                        <Label>Username: </Label>
+                        <Input type="select" 
                             value={this.state.username}
                             onChange={this.onChangeUsername}>
                             {
@@ -108,38 +112,38 @@ export default class EditExercise extends Component {
                                     </option>;
                                 })
                             }
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Description: </label>
-                        <input type="text"
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Description: </Label>
+                        <Input type="text"
                             required
                             className="form-control"
                             value={this.state.description}
                             onChange={this.onChangeDescription}
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Duration (in minutes): </label>
-                        <input
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Duration (in minutes): </Label>
+                        <Input
                             type="text"
                             className="form-control"
                             value={this.state.duration}
                             onChange={this.onChangeDuration}
                         />
-                    </div>
-                    <div className="form-group">
-                        <label>Date: </label>
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>Date: </Label>
                         <DatePicker
                             selected={this.state.date}
                             onChange={this.onChangeDate}
                         />
-                    </div>
+                    </FormGroup>
 
-                    <div className="form-group">
-                        <input type="submit" value="Edit Exercise Log" className="btn btn-primary" />
-                    </div>
-                </form>
+                    <br />
+
+                    <Button type="submit" color="primary">Edit Exercise Log</Button>
+                </Form>
             </div>
         )
     }

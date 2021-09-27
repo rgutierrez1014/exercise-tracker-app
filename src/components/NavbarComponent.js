@@ -6,14 +6,9 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
+    NavLink
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink as RRNavLink, Link } from 'react-router-dom';
 
 
 const Navigation = (props) => {
@@ -23,22 +18,24 @@ const Navigation = (props) => {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <Navbar color="dark" expand="lg">
-            <Link to="/" className="navbar-brand">Exercise Tracker</Link>
-            <NavbarToggler onClick={toggle} />
-            <Collapse navbar>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                        <NavLink tag={Link} to="/">Exercises</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink tag={Link} to="/create">Create Exercise Log</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink tag={Link} to="/user">Create User</NavLink>
-                    </NavItem>
-                </Nav>
-            </Collapse>
+        <Navbar color="dark" dark expand="lg">
+            <div className="container">
+                <NavbarBrand tag={Link} to="/">Exercise Tracker</NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink tag={RRNavLink} to="/">Exercises</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink tag={RRNavLink} to="/create">Create Exercise Log</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink tag={RRNavLink} to="/user">Create User</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </div>
         </Navbar>
     );
 }

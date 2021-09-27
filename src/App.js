@@ -11,9 +11,8 @@ import CreateUser from "./components/CreateUserComponent";
 function App() {
     return (
         <BrowserRouter>
+            <Navigation />
             <div className="container">
-                <Navigation />
-                <br />
                 <Route path="/" exact component={ExerciseList} />
                 <Route path="/edit/:id" component={EditExercise} />
                 <Route path="/create" component={CreateExercise} />
