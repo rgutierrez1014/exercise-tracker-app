@@ -71,6 +71,8 @@ For the backend, open another Terminal tab or window. Navigate to the `backend` 
 nodemon server
 ```
 
+You may have to install `nodemon` globally if you haven't done so yet.
+
 ## Deployment
 
 ### Frontend app
