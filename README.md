@@ -8,7 +8,9 @@ The frontend service is also configured for hot reloading.
 
 ## Initial setup
 
-You will need a `env_vars.yaml` file and a `.env` file for the backend service.
+For the database, I recommend making an account with MongoDB Atlas and spinning up a free tier cluster. Once you have a database ready, grab the instance url.
+
+For the backend (in the `backend` folder), you will need a `env_vars.yaml` file and a `.env` file.
 
 ```
 # in .env file:
@@ -20,7 +22,7 @@ env_variables:
     ATLAS_URI: <MongoDB instance url>
 ```
 
-For the frontend, modify the objects within **config.js** to set up variables for each type of environment.
+For the frontend (in the `src` folder), modify the objects within **config.js** to set up variables for each type of environment.
 
 ## Running locally
 
